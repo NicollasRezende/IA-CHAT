@@ -1,4 +1,4 @@
-# DeepSeek-R1 14B Chat Interface
+# AI Chat Interface
 
 ## Sobre o Projeto
 Este projeto fornece uma interface de chat interativa para comunicação com o modelo **DeepSeek-R1 14B** via **Ollama**. A interface é estilizada utilizando a biblioteca **Rich**, oferecendo uma experiência visual aprimorada.
