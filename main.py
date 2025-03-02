@@ -69,11 +69,10 @@ Pergunta do usuário: """
     
     prompt_completo = prefixo_portugues + prompt
     
-    # Comando específico
     cmd = AGENT
     
     
-    # Log estilizado
+    # Logs
     console.print(Panel(
         f"[model]Iniciando comunicação com {cmd[2]}",
         title=f"[header]STATUS - {cmd[2]}[/header]",  # Nome do modelo dinâmico no título
@@ -106,7 +105,6 @@ Pergunta do usuário: """
         if not show_thinking:
             return
             
-        # Usa um método mais simples que não conflita
         thinking_phrases = [
             "Processando informações",
             "Analisando contexto",
@@ -137,11 +135,9 @@ Pergunta do usuário: """
                     clear_len = len(progress_line) + 5
                     print("\r" + " " * clear_len, end="\r")
                 
-                # Novo texto de progresso
                 progress_line = f"{spinner_char} {phrase}... ({minutes:02d}:{seconds:02d})"
                 print("\r" + progress_line, end="", flush=True)
                 
-                # Pausa curta
                 time.sleep(0.1)
         finally:
             # Garante que limpamos a linha no final
@@ -190,7 +186,6 @@ Pergunta do usuário: """
                 box=ROUNDED
             ))
     else:
-        # Log de conclusão
         console.print("[success]✓ Resposta recebida![/success]")
     
     return result["stdout"].strip()
