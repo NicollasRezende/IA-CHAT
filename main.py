@@ -26,6 +26,8 @@ custom_theme = Theme({
     "chat_history": "dim white"
 })
 
+AGENT = cmd = ["ollama", "run", "llama3.2"]
+
 console = Console(theme=custom_theme, width=100)
 
 def clear_screen():
@@ -37,7 +39,7 @@ def show_header():
     clear_screen()
     table = Table(show_header=False, box=ROUNDED, border_style="blue", width=100)
     table.add_column()
-    table.add_row("🤖 DeepSeek-R1 14B Chat Interface 🤖")
+    table.add_row(f"🤖 {cmd[2]} Chat Interface 🤖")
     console.print(table)
     console.print("=" * 100, style="blue")
     console.print()
@@ -68,12 +70,13 @@ Pergunta do usuário: """
     prompt_completo = prefixo_portugues + prompt
     
     # Comando específico
-    cmd = ["ollama", "run", "deepseek-r1:14b"]
+    cmd = AGENT
+    
     
     # Log estilizado
     console.print(Panel(
-        "[model]Iniciando comunicação com DeepSeek-R1 (14B)[/model]",
-        title="[header]STATUS[/header]",
+        f"[model]Iniciando comunicação com {cmd[2]}",
+        title=f"[header]STATUS - {cmd[2]}[/header]",  # Nome do modelo dinâmico no título
         border_style="blue",
         box=ROUNDED
     ))
@@ -324,7 +327,7 @@ def predefined_questions():
     # Exibindo a resposta em um painel estilizado
     console.print(Panel(
         format_response(resposta),
-        title="[header]Resposta do DeepSeek-R1[/header]",
+        title=f"[header]Resposta do {cmd[2]}[/header]",
         border_style="cyan",
         box=ROUNDED,
         expand=False,
@@ -380,4 +383,4 @@ if __name__ == "__main__":
     except Exception as e:
         console.print(f"[error]Erro inesperado: {str(e)}[/error]")
     finally:
-        console.print("\n[info]Obrigado por usar a interface DeepSeek-R1![/info]")
+        console.print(f"\n[info]Obrigado por usar a interface {cmd[2]}[/info]")
